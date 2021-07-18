@@ -1,0 +1,45 @@
+body {
+    font-family: sans-serif;
+    
+}
+
+#footer {
+    font-size: 0.5em;
+    color: gray;
+    display: block;
+    margin-top: 50px;
+}
+
+form {
+    margin-bottom: 50px;
+    max-width: 400px;
+}
+
+form input#url {
+    width: 100%;
+    border: 1px solid black;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+form input[type="submit"] {
+    font-weight: bold;
+}
+
+form > label, form > input {
+    display: block;
+    font-size: 16px;
+}
+
+table {
+    border-collapse: collapse;
+    display: none;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 5px;
+}
