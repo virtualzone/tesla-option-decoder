@@ -23,7 +23,7 @@
         let inputList = Array.prototype.slice.call(document.getElementsByTagName("input"));
         inputList.forEach(input => input.disabled = disable);
     }
-
+    
     document.getElementsByTagName("form").item(0).onsubmit = function (e) {
         e.preventDefault();
         disableForm(true);
