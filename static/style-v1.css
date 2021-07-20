@@ -20,20 +20,29 @@ form {
     max-width: 400px;
 }
 
-form input#url {
+form input#url,
+form textarea#codes {
     width: 100%;
     border: 1px solid black;
     padding: 5px;
     margin-bottom: 10px;
 }
 
+form textarea#codes {
+    height: 75px;
+}
+
 form input[type="submit"] {
     font-weight: bold;
 }
 
-form > label, form > input {
+form input[type="text"], form input[type="url"], form input[type="button"] {
     display: block;
     font-size: 16px;
+}
+
+.form-row {
+    margin-bottom: 20px;
 }
 
 table {

@@ -15,16 +15,20 @@ import (
 	"github.com/go-playground/validator"
 )
 
-type GetOptionCodeRequest struct {
+type GetOptionCodeURLRequest struct {
 	URL string `json:"url" validate:"required,url"`
 }
 
-func GetOptionCodesHandler(w http.ResponseWriter, r *http.Request) {
+type GetOptionCodeCodesRequest struct {
+	Codes []string `json:"codes" validate:"required"`
+}
+
+func GetOptionCodesURLHandler(w http.ResponseWriter, r *http.Request) {
 	if strings.ToUpper(r.Method) != "POST" {
 		SendMethodNotAllowed(w)
 		return
 	}
-	var m GetOptionCodeRequest
+	var m GetOptionCodeURLRequest
 	if UnmarshalValidateBody(r, &m) != nil {
 		SendBadRequest(w)
 		return
@@ -47,7 +51,25 @@ func GetOptionCodesHandler(w http.ResponseWriter, r *http.Request) {
 	resp := make(OptionCodeList)
 	for _, code := range codes {
 		details := refList[code]
-		//log.Println(code + " --> " + details.Title)
+		resp[code] = details
+	}
+	SendJSON(w, resp)
+}
+
+func GetOptionCodesCodesHandler(w http.ResponseWriter, r *http.Request) {
+	if strings.ToUpper(r.Method) != "POST" {
+		SendMethodNotAllowed(w)
+		return
+	}
+	var m GetOptionCodeCodesRequest
+	if UnmarshalValidateBody(r, &m) != nil {
+		SendBadRequest(w)
+		return
+	}
+	refList := OptionCodeListInstance
+	resp := make(OptionCodeList)
+	for _, code := range m.Codes {
+		details := refList[code]
 		resp[code] = details
 	}
 	SendJSON(w, resp)
@@ -114,7 +136,8 @@ func ServeHTTP() {
 		ReadTimeout:  time.Second * 15,
 		IdleTimeout:  time.Second * 60,
 	}
-	http.HandleFunc("/api/optioncodes", GetOptionCodesHandler)
+	http.HandleFunc("/api/optioncodes/url", GetOptionCodesURLHandler)
+	http.HandleFunc("/api/optioncodes/codes", GetOptionCodesCodesHandler)
 	fs := http.FileServer(http.Dir("./static"))
 	http.Handle("/", fs)
 	go func() {

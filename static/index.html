@@ -5,7 +5,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <link rel="stylesheet" href="./style.css" />
+        <link rel="stylesheet" href="./style-v1.css" />
         <meta name="description" content="Decode your Tesla's option codes." />
         <meta property="og:title" content="Option Code Decoder for Tesla" />
         <meta property="og:description" content="Decode your Tesla's option codes and find out what parts your car is made of." />
@@ -13,9 +13,17 @@
     <body>
         <h1>Option Code Decoder for Tesla</h1>
         <form>
-            <label for="url">Offer URL:</label>
-            <input id="url" name="url" type="url" required="required" autofocus="autofocus" />
-            <input type="submit" value="Decode" />
+            <div class="form-row">
+                <input type="radio" name="mode" value="url" id="mode-url" checked="checked" /> <label for="mode-url">Offer URL:</label>
+                <input id="url" name="url" type="url" autofocus="autofocus" required="required" />
+            </div>
+            <div class="form-row">
+                <input type="radio" name="mode" value="codes" id="mode-codes" /> <label for="mode-codes">Option Code List:</label>
+                <textarea id="codes" name="codes"></textarea>
+            </div>
+            <div class="form-row">
+                <input type="submit" value="Decode" />
+            </div>
         </form>
         <table>
             <thead>
@@ -31,6 +39,6 @@
         <p id="footer">
             All information is without guarantee of correctness and completeness. Option codes provided by <a href="https://tesla-api.timdorr.com/vehicle/optioncodes" target="_blank">tesla-api.timdorr.com</a>. This website is not affiliated with Tesla, Inc. Tesla is a trademark of Tesla, Inc. | <a href="https://virtualzone.de/kontakt/" target="_blank">Imprint</a>
         </p>
-        <script type="text/javascript" src="./script.js"></script>
+        <script type="text/javascript" src="./script-v1.js"></script>
     </body>
 </html>
