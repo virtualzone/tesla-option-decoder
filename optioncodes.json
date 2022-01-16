@@ -309,6 +309,7 @@
 "PT01": {"title": "Trunk Power trunk", "description": "Model 3"},
 "RA01": {"title": "", "description": "Model 3"},
 "RD02": {"title": "", "description": "Model 3"},
+"RDU4": {"title": "Rear small drive unit with elec. oil pump(stator <5kg)", "description": "Model S/X 2020 (Plus version)"},
 "RS3H": {"title": "Second Row Seat Rear Seats (Heated)", "description": "Model 3"},
 "PX00": {"title": "No Performance Plus Package", "description": ""},
 "PX01": {"title": "Performance Plus", "description": ""},
