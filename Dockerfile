@@ -1,10 +1,10 @@
-FROM golang:1.17-alpine AS server-builder
+FROM golang:1.20-alpine AS server-builder
 RUN apk --update add --no-cache git curl bash
 RUN export GOBIN=$HOME/work/bin
 WORKDIR /go/src/app
 ADD . .
 RUN go get -d -v ./...
-RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -o main .
+RUN CGO_ENABLED=0 go build -ldflags="-w -s" -o main .
 
 FROM alpine:3.18 AS optioncode-builder
 RUN apk --update add --no-cache curl jq bash
