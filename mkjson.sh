@@ -12,7 +12,7 @@ cat optioncodes.md | grep "|" | while read -r a; do
         declare -a row
         for i in "${!array[@]}"; do
             #e=`echo "${array[i]}" | xargs -0`;
-            e="$(echo "${array[i]}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/"/\\"/')"
+            e="$(echo "${array[i]}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's/\\/\\\\/g' -e 's/"/\\"/g')"
             row[$i]=$e
         done
         echo "\"${row[1]}\": {\"title\": \"${row[2]}\", \"description\": \"${row[3]}\"}," >> optioncodes.json
